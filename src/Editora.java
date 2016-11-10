@@ -1,7 +1,6 @@
 import Banco.ConnectionFactory.ConnectionFactory;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Scanner;
@@ -98,8 +97,15 @@ public class Editora {
             listar();
             System.out.println("Digite o id da editora: ");
             int ide = entrada.nextInt();
+            String novonome;
+            String novoemail;
 
-                String sql = "UPDATE Editora SET nome, email " + "WHERE ";
+            System.out.println("Novo nome: ");
+            novonome = entrada.next();
+            System.out.println("Novo email: ");
+            novoemail = entrada.next();
+
+                String sql = "UPDATE Editora SET nome = '" + novonome + "',  email = '" + novoemail + "' WHERE id = " + ide +";";
 
                 PreparedStatement comando = conexao.prepareStatement(sql);
 
